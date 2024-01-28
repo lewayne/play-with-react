@@ -1,25 +1,48 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { useState } from "react";  
+import "./App.css"  
+import FormFruit from "./components/FormFruit";
+import Fruit from "./components/Fruit";
+ 
+function App()  {
+  const [fruits, setFruits] = useState([
+    { id: 1, name: "lewayne" },
+    { id: 2, name: "merlin" },
+    { id: 3, name: "Henri" }
+    
+  ]);
+ 
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+   const handleDelete = (id) => {
+     setFruits(fruits.filter((f) => f.id !== id));
+   }
+
+    const afficherFruit = (fruit) => {
+      alert("J'aime ce fruit " + fruit);
+    };
+
+    const handleAdd = (data) => {
+       const fruitsCopy = fruits.slice(); // [...fruits]
+       fruitsCopy.push(data);
+       setFruits(fruitsCopy);
+    };
+
+    // <Fruit key={f.id} fruit={f} onFruitDelete={handleDelete} /> 
+    return (
+      <div>
+        <h1> Liste des fruits </h1>
+        <ul>
+          {fruits.map((f) => (
+            <Fruit
+              key={f.id}
+              fruit={f}
+              actionClick={() => afficherFruit(f.id)}
+            />
+          ))}
+        </ul>
+
+        <FormFruit handleAdd={handleAdd} />
+      </div>
+    ); 
 }
 
 export default App;
