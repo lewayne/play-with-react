@@ -6,7 +6,7 @@ export default function Fruit({ fruit, actionClick }) {
   return (
     <li>
       {" "}
-      {fruit.name} <button onClick={actionClick}>x</button>
+      {fruit.name}  <button onClick={actionClick}>x</button>
     </li>
   );
 }

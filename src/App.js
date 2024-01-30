@@ -5,10 +5,10 @@ import Fruit from "./components/Fruit";
  
 function App()  {
   const [fruits, setFruits] = useState([
-    { id: 1, name: "lewayne" },
-    { id: 2, name: "merlin" },
-    { id: 3, name: "Henri" }
-    
+    { id: 1, name: "Tomato" },
+    { id: 2, name: "Mangoe" },
+    { id: 3, name: "Citron" },
+    { id: 4, name: "Pineapple" }
   ]);
  
 
@@ -16,8 +16,8 @@ function App()  {
      setFruits(fruits.filter((f) => f.id !== id));
    }
 
-    const afficherFruit = (fruit) => {
-      alert("J'aime ce fruit " + fruit);
+    const displayFruit = (fruit) => {
+      alert("I like this fruit " + fruit);
     };
 
     const handleAdd = (data) => {
@@ -35,7 +35,7 @@ function App()  {
             <Fruit
               key={f.id}
               fruit={f}
-              actionClick={() => afficherFruit(f.id)}
+              actionClick={() => handleDelete(f.id)}
             />
           ))}
         </ul>
